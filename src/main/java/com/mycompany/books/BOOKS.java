@@ -1,16 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package com.mycompany.books;
 
-/**
- *
- * @author DELL
- */
+import java.util.Scanner;
 public class BOOKS {
 
+    public static String ENTREGA = "Entrega";
+ public static String PRESTAMO = "Prestamo";
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       
+            LoanBooks booksOne = new LoanBooks("La Divina Comedia ","Dante Alighieri", "Dramático", "1314", true, 2, 7," ","6/03/2024","10/03/2024");
+            LoanBooks booksTwo = new LoanBooks("Lágrimas de Angeles", "Edna Iturralde","Ficción","2021",true,2,7," ","6/03/2024","10/10/2024");
+            LoanBooks booksThree =  new LoanBooks ("La Odisea", "Homero","Épica","VII",true,1,7,"","7/03/2024","17/03/2024");
+            Scanner read = new Scanner (System.in);
+            String action;
+        do {
+            System.out.println("Ingrese la acción que va a realizar: ");
+            action = read.nextLine();
+            if (ENTREGA.equalsIgnoreCase(action)) {
+                booksOne.returnBooks();
+                booksTwo.returnBooks();
+                booksThree.returnBooks();
+            } else if (PRESTAMO.equalsIgnoreCase(action)) {
+                booksOne.lendBooks();
+                booksTwo.lendBooks();
+                booksThree.lendBooks();
+            } else {
+                System.out.println("La acción no se puede realizar");
+            }
+        } while (!action.equalsIgnoreCase("salir"));
     }
 }
